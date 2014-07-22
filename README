@@ -1,0 +1,17 @@
+A dynamic contact form that can be used in many different websites, it is quite user-friendly with its unique design and customisable in every detail as desired.
+
+Features:
+* Ready to GO by including on your site easily with include('script.php')
+* Include easily with a button (see demo)
+* Full explanation of configuration included at config.php file
+* Notification system with different emails (customisable CC/BCC fields), databases and files simultaneously.
+* Validation from client-side and server-side simultaneously
+* XSS and SQL injection attacts protection
+* Captcha protection without any third-party HTTP request
+* Custom inputs: text input, checkbox and textarea
+* Custom themes: green yellowblue blue pink dark
+* Custom regular expression if necessary
+* Responsive on your iphone/ipad
+* Lots of other configurable options like: bottom-info, success-message, head, title, enable/disable captcha, use of CDN or local files, input[placeholder,requirement,notification-name,icon class name,regular-expression,style], enable/disable icons, window-width, centered-window etc.
+
+Open config.php file with notepad or your desired text editor to read instructions.

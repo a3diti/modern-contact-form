@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Sniglet';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sniglet Regular'), local('Sniglet-Regular'), url(1.woff) format('woff');
+}
+@font-face {
+  font-family: 'Sniglet';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Sniglet ExtraBold'), local('Sniglet-ExtraBold'), url(2.woff) format('woff');
+}

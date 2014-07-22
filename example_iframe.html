@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>my site</title>
+	</head>
+	<body>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<style>
+			.contactHolder{z-index:2;position:absolute;display: none;top:0;left:0;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.6);}
+			.contactMiddle{display: table-cell;vertical-align: middle;}
+			.contactCenter{margin:0 auto;box-shadow:0 0px 4px black;}
+			@media screen and (max-device-width: 480px){.contactHolder{width:100% !important;}.contactCenter iframe{width:100% !important;}}
+		</style>
+		<script>
+			var contactLocation='index.php';
+			function modernContact(){
+				$('.myContact').empty().append(
+					$('<div class="contactHolder"/>').click(function(e){$(this).fadeOut();e.stopPropagation()})
+						.append(
+							$('<div class="contactMiddle"/>').append(
+								$('<div class="contactCenter"/>').append(
+									$('<iframe/>').attr({'frameborder':'0','scrolling':'no','src':contactLocation}).load(function(){
+										$('.contactHolder').fadeIn().css('display','table');
+										var iframe=$(this),cntsHolder=$('.cnts-holder', iframe.contents()),iframeSize;
+										iframeSize={'width':cntsHolder.css('max-width'),'height':cntsHolder.outerHeight()+'px'};iframe.css(iframeSize).parent().css(iframeSize);
+										iframeSize={'width':cntsHolder.css('max-width'),'height':cntsHolder.outerHeight()+'px'};iframe.css(iframeSize).parent().css(iframeSize);
+										$('.close,.cnts-alert', iframe.contents()).unbind().click(function(){$('.contactHolder').fadeOut()});
+									})
+								)
+							)
+						)
+				);
+			}
+		</script>
+		
+		<button onclick="modernContact()" style="font-size:12pt;cursor:pointer">CONTACT ME BUTTON</button>
+		<div class="myContact"></div>
+	</body>
+</html>

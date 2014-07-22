@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>my site</title>
+	</head>
+	<body>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<style>
+			.contactHolder{z-index:2;position:absolute;display: table;top:0;left:0;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.6);}
+			.contactMiddle{display: table-cell;vertical-align: middle;}
+			.contactCenter{margin:0 auto;width:180px;}
+			@media screen and (max-device-width: 480px){.contactHolder{width:100% !important;}.contactCenter iframe{width:100% !important;}}
+		</style>
+		<script>
+			var contactLocation='index.php';
+			function modernContact(theme){
+				$('.myContact').show().empty().append(
+					$('<div class="contactHolder"/>').click(function(e){$(this).fadeOut();e.stopPropagation()})
+						.append(
+							$('<div class="contactMiddle"/>').append(
+								$('<div class="contactCenter"/>').append(
+									$('<span id="loading"/>').text(' loading ... ').css({'font-size':'34px','color':'white','padding':'10px','text-shadow':'1px 1px 1px #ff8000'}).load(function(){$('.contactHolder').fadeIn().css('display','table')}),
+									$('<iframe/>').attr({'frameborder':'0','scrolling':'no','src':contactLocation+"?theme="+theme,'style':'display:none'}).load(function(){
+										$('.contactCenter').css('box-shadow','0 0px 4px black');
+										$('#loading').hide();$(this).show();
+										var iframe=$(this),cntsHolder=$('.cnts-holder', iframe.contents()),iframeSize;
+										iframeSize={'width':cntsHolder.css('max-width'),'height':cntsHolder.innerHeight()+'px'};iframe.css(iframeSize).parent().css(iframeSize);
+										iframeSize={'width':cntsHolder.css('max-width'),'height':cntsHolder.innerHeight()+'px'};iframe.css(iframeSize).parent().css(iframeSize);
+										$('.close,.cnts-alert', iframe.contents()).unbind().click(function(){$('.contactHolder').fadeOut()});
+									})
+								)
+							)
+						)
+				);
+			}
+		</script>
+		<div class="demoButtons">
+			<style>
+				.demoButtons{width:100%;font-size:14pt;font-weight: bold;text-align: center;color:#333;text-shadow:0 0 1px white;}
+				.demoButtons span{padding: 5px 8px;background-color: white;border-radius: 3px;box-shadow:0 0 1px black;vertical-align: middle;cursor: pointer;}
+				.demoButtons span:hover{background-color: #dbdbdb}
+			</style>
+			<p style="color:#1F8FFF;text-shadow:1px 1px 0 black;font-size:17pt">Pick a theme</p>
+			<span onclick="modernContact('yellowblue')" style="color:#C0D100;text-shadow:0 -1px 0 black">yellowblue</span>
+			<span onclick="modernContact('blue')" style="color:#008CFF;text-shadow:0 -1px 0 black">blue</span>
+			<span onclick="modernContact('green')" style="color:#00B303;text-shadow:0 -1px 0 black">green</span>
+			<span onclick="modernContact('dark')" style="color:#404040;text-shadow:0 -1px 0 black">dark</span>
+			<span onclick="modernContact('pink')" style="color:#E62AF7;text-shadow:0 -1px 0 black">pink</span>
+		</div>
+		<div class="myContact" style="display:none"></div>
+	</body>
+</html>
